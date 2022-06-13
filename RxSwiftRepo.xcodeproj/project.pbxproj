@@ -19,6 +19,8 @@
 		1619E4502846F41600849C5F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1619E44F2846F41600849C5F /* RxSwift */; };
 		16CBBF142856BD6800B640CC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF132856BD6800B640CC /* View.swift */; };
 		16CBBF172856BEFA00B640CC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16CBBF162856BEFA00B640CC /* SnapKit */; };
+		16CBBF1B2856C30E00B640CC /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */; };
+		16CBBF1D2856C34500B640CC /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1C2856C34400B640CC /* AddAlarmView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		1619E43D2846EFA900849C5F /* RxSwiftRepoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftRepoUITests.swift; sourceTree = "<group>"; };
 		1619E43F2846EFA900849C5F /* RxSwiftRepoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftRepoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		16CBBF132856BD6800B640CC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
+		16CBBF1C2856C34400B640CC /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +111,8 @@
 			children = (
 				1619E41C2846EFA500849C5F /* AppDelegate.swift */,
 				1619E41E2846EFA500849C5F /* SceneDelegate.swift */,
-				1619E4202846EFA500849C5F /* ViewController.swift */,
-				16CBBF132856BD6800B640CC /* View.swift */,
+				16CBBF182856C2B400B640CC /* ViewController */,
+				16CBBF192856C2CA00B640CC /* View */,
 				1619E4252846EFA800849C5F /* Assets.xcassets */,
 				1619E4272846EFA800849C5F /* LaunchScreen.storyboard */,
 				1619E42A2846EFA800849C5F /* Info.plist */,
@@ -131,6 +135,24 @@
 				1619E43F2846EFA900849C5F /* RxSwiftRepoUITestsLaunchTests.swift */,
 			);
 			path = RxSwiftRepoUITests;
+			sourceTree = "<group>";
+		};
+		16CBBF182856C2B400B640CC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1619E4202846EFA500849C5F /* ViewController.swift */,
+				16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16CBBF192856C2CA00B640CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16CBBF132856BD6800B640CC /* View.swift */,
+				16CBBF1C2856C34400B640CC /* AddAlarmView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +296,8 @@
 			files = (
 				16CBBF142856BD6800B640CC /* View.swift in Sources */,
 				1619E4212846EFA500849C5F /* ViewController.swift in Sources */,
+				16CBBF1D2856C34500B640CC /* AddAlarmView.swift in Sources */,
+				16CBBF1B2856C30E00B640CC /* AddAlarmViewController.swift in Sources */,
 				1619E41D2846EFA500849C5F /* AppDelegate.swift in Sources */,
 				1619E41F2846EFA500849C5F /* SceneDelegate.swift in Sources */,
 			);
