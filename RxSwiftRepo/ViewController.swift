@@ -25,8 +25,26 @@ class ViewController: UIViewController {
         setTableView()
     }
     
-    //MARK: - Methods
+    //MARK: - setNavigationBar
+    private func setNavigationBar(){
+        title = "Alarm"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
 
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.leftBarButtonItem = editButton
+    }
+    
+    @objc func add(){
+        
+    }
+    
+    @objc func edit(){
+        
+    }
+    
+    //MARK: -setTableView
     private func setTableView(){
         tables.table.delegate = self
         tables.table.dataSource = self

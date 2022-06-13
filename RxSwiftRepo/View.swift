@@ -18,6 +18,7 @@ class View: UIView {
         return tableView
     }()
     
+    //MARK: -Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(table)
@@ -29,8 +30,11 @@ class View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: -AutoLayout
     private func autoLayout(){
-        
+        table.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
 }
