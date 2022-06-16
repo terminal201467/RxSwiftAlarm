@@ -21,6 +21,8 @@
 		16CBBF172856BEFA00B640CC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16CBBF162856BEFA00B640CC /* SnapKit */; };
 		16CBBF1B2856C30E00B640CC /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */; };
 		16CBBF1D2856C34500B640CC /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1C2856C34400B640CC /* AddAlarmView.swift */; };
+		16CBBF1F2858184D00B640CC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1E2858184D00B640CC /* ViewModel.swift */; };
+		16CBBF212858189000B640CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF202858189000B640CC /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		16CBBF132856BD6800B640CC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		16CBBF1C2856C34400B640CC /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
+		16CBBF1E2858184D00B640CC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		16CBBF202858189000B640CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 			children = (
 				1619E41C2846EFA500849C5F /* AppDelegate.swift */,
 				1619E41E2846EFA500849C5F /* SceneDelegate.swift */,
+				16CBBF202858189000B640CC /* Model.swift */,
+				16CBBF1E2858184D00B640CC /* ViewModel.swift */,
 				16CBBF182856C2B400B640CC /* ViewController */,
 				16CBBF192856C2CA00B640CC /* View */,
 				1619E4252846EFA800849C5F /* Assets.xcassets */,
@@ -300,6 +306,8 @@
 				16CBBF1B2856C30E00B640CC /* AddAlarmViewController.swift in Sources */,
 				1619E41D2846EFA500849C5F /* AppDelegate.swift in Sources */,
 				1619E41F2846EFA500849C5F /* SceneDelegate.swift in Sources */,
+				16CBBF1F2858184D00B640CC /* ViewModel.swift in Sources */,
+				16CBBF212858189000B640CC /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

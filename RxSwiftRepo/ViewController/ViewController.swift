@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
     
     //MARK: -Properties
     private let tables = View.init()
     
-    private var store:[String] = []
+    private let storeObservable = Observable.just([Alarm].self)
+    
+    private let addAlarmViewController = AddAlarmViewController()
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     @objc func add(){
-        
+        present(addAlarmViewController, animated: true)
     }
     
     @objc func edit(){
@@ -48,19 +51,18 @@ class ViewController: UIViewController {
     //MARK: -setTableView
     private func setTableView(){
         tables.table.delegate = self
-        tables.table.dataSource = self
+    }
+    
+    private func setTableViewCellItem(){
+        store
+            .
     }
 
 }
 
-extension ViewController:UITableViewDelegate,UITableViewDataSource{
+extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return store.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return cell
     }
     
     

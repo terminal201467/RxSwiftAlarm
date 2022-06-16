@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum CellName:Int,CaseIterable{
     case repeats = 0,label,alert,remindLater
@@ -22,7 +24,13 @@ enum CellName:Int,CaseIterable{
 class AddAlarmViewController: UIViewController {
     //MARK: - UIProperties
     private let addAlarmView = AddAlarmView()
-
+    
+    
+    //MARK: - DataProperties
+    
+    private let cellNames = Observable.just(CellName.allCases)
+    
+    private let disposeBag = DisposeBag()
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -34,6 +42,7 @@ class AddAlarmViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setTableView()
+        setTableCellItem()
     }
     
     //MARK: - setNavigationBar
@@ -42,7 +51,7 @@ class AddAlarmViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-
+        
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.leftBarButtonItem = cancelButton
     }
@@ -58,20 +67,19 @@ class AddAlarmViewController: UIViewController {
     //MARK: -setTalbleView
     private func setTableView(){
         addAlarmView.table.delegate = self
-        addAlarmView.table.dataSource = self
+    }
+    
+    private func setTableCellItem(){
+        cellNames
+            .bind(to: addAlarmView.table.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)){(_,cellName:CellName,cell:UITableViewCell) in
+                cell.textLabel?.text = cellName.text
+            }
+            .disposed(by: disposeBag)
     }
 }
 
-extension AddAlarmViewController:UITableViewDelegate,UITableViewDataSource{
+extension AddAlarmViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return CellName.allCases.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
-    
-    
-    
 }
