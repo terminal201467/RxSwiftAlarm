@@ -8,14 +8,16 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: -Properties
     private let tables = View.init()
     
-    private let storeObservable = Observable.just([Alarm].self)
+    private let storeObservable = Observable.just([Alarm]())
     
     private let addAlarmViewController = AddAlarmViewController()
+    
+    private let disposeBag = DisposeBag()
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setTableView()
+        setTableViewCellItem()
     }
     
     //MARK: - setNavigationBar
@@ -49,23 +51,14 @@ class ViewController: UIViewController {
     }
     
     //MARK: -setTableView
-    private func setTableView(){
-        tables.table.delegate = self
-    }
     
     private func setTableViewCellItem(){
-        store
-            .
+        storeObservable
+            .bind(to:tables.table.rx.items(cellIdentifier: "Cell",
+                                           cellType: UITableViewCell.self)){(row,element,cell) in
+                cell.textLabel?.text = "\(row):\(element)"
+            }
+            .disposed(by: disposeBag)
     }
-
-}
-
-extension ViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.count
-    }
-    
-    
-    
 }
 
