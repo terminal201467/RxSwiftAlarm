@@ -43,6 +43,7 @@ class AddAlarmViewController: UIViewController {
         setNavigationBar()
         setTableView()
         setTableCellItem()
+        setTableViewItemSelect()
     }
     
     //MARK: - setNavigationBar
@@ -75,6 +76,29 @@ class AddAlarmViewController: UIViewController {
                 cell.textLabel?.text = cellName.text
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func setTableViewItemSelect(){
+        addAlarmView.table.rx.itemSelected.subscribe { indexPath in
+            print("選中的indexPath:\(indexPath.row)")
+            guard let cellNames = CellName(rawValue: indexPath.row)else{ return }
+            switch cellNames {
+            case .repeats:
+                print("repeat")
+            case .label:
+                print("label")
+            case .alert:
+                print("alert")
+            case .remindLater:
+                print("remindLater")
+            }
+        } onError: { error in
+            print("\(error)")
+        } onCompleted: {
+            print("completed")
+        } onDisposed: {
+            print("disposed")
+        }.disposed(by: disposeBag)
     }
 }
 
