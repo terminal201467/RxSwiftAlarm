@@ -6,6 +6,22 @@
 //
 
 import UIKit
+import RxSwift
+
+enum WeekDay:Int,CaseIterable{
+    case mon,tue,wed,thu,fri,sat,sun
+    var text:String{
+        switch self {
+        case .mon: return "MonDay"
+        case .tue: return "TuesDay"
+        case .wed: return "WednesDay"
+        case .thu: return "ThursDay"
+        case .fri: return "FriDay"
+        case .sat: return "SaturDay"
+        case .sun: return "SunDay"
+        }
+    }
+}
 
 class RepeatViewController: UIViewController {
     
@@ -17,6 +33,9 @@ class RepeatViewController: UIViewController {
         tableView.allowsSelection = true
         return tableView
     }()
+    
+    //MARK: -WeekDayChoose
+    private var weekDayChooseObservable = Observable.just(Set<WeekDay>())
     
     //MARK: -LifeCycle
     override func loadView() {
@@ -33,6 +52,17 @@ class RepeatViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    private func setTableViewCells(){
+        weekDayChooseObservable
+            .bind(to: table.rx.items(cellIdentifier: "Cell", cellType:UITableViewCell.self){ (row,cell,element) in
+                
+                
+                return cell
+            }
+        
+    }
     
-
+    private func setTableViewSelect(){
+        
+    }
 }
