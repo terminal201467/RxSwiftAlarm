@@ -22,6 +22,12 @@ enum CellName:Int,CaseIterable{
 }
 
 class AddAlarmViewController: UIViewController {
+    //MARK: - Properties
+    
+    private var repeatTime:String = ""
+    
+    
+    
     //MARK: - UIProperties
     private let addAlarmView = AddAlarmView()
     
@@ -81,17 +87,23 @@ class AddAlarmViewController: UIViewController {
     //MARK: -setTableView
     private func setTableCellItem(){
         cellNames
-            .bind(to: addAlarmView.table.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)){(_,cellName:CellName,cell:UITableViewCell,element) in
+            .bind(to: addAlarmView.table.rx.items(cellIdentifier: "Cell",
+                                                  cellType: UITableViewCell.self)){(element,cellName,cell) in
                 guard let cellName = CellName(rawValue:element) else { return }
                 switch cellName {
                 case .repeats:
                     cell.textLabel?.text = cellName.text
+                    cell.detailTextLabel?.text =
+                    cell.accessoryType = .disclosureIndicator
                 case .label:
                     cell.textLabel?.text = cellName.text
+                    cell.accessoryType = .disclosureIndicator
                 case .alert:
                     cell.textLabel?.text = cellName.text
+                    cell.accessoryType = .disclosureIndicator
                 case .remindLater:
                     cell.textLabel?.text = cellName.text
+                    cell.accessoryView = self.addAlarmView.remindLaterSwitch
                 }
             }
             .disposed(by: disposeBag)

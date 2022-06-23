@@ -23,6 +23,9 @@
 		16CBBF1D2856C34500B640CC /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1C2856C34400B640CC /* AddAlarmView.swift */; };
 		16CBBF1F2858184D00B640CC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF1E2858184D00B640CC /* ViewModel.swift */; };
 		16CBBF212858189000B640CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBBF202858189000B640CC /* Model.swift */; };
+		16CF5CD42863F55600CFFC41 /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF5CD32863F55600CFFC41 /* RepeatViewController.swift */; };
+		16CF5CD62863F58600CFFC41 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF5CD52863F58600CFFC41 /* LabelViewController.swift */; };
+		16CF5CD82863F59A00CFFC41 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF5CD72863F59A00CFFC41 /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		16CBBF1C2856C34400B640CC /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
 		16CBBF1E2858184D00B640CC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		16CBBF202858189000B640CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		16CF5CD32863F55600CFFC41 /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
+		16CF5CD52863F58600CFFC41 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		16CF5CD72863F59A00CFFC41 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,9 @@
 			children = (
 				1619E4202846EFA500849C5F /* ViewController.swift */,
 				16CBBF1A2856C30E00B640CC /* AddAlarmViewController.swift */,
+				16CF5CD32863F55600CFFC41 /* RepeatViewController.swift */,
+				16CF5CD52863F58600CFFC41 /* LabelViewController.swift */,
+				16CF5CD72863F59A00CFFC41 /* AlertViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -301,11 +310,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				16CBBF142856BD6800B640CC /* View.swift in Sources */,
+				16CF5CD62863F58600CFFC41 /* LabelViewController.swift in Sources */,
 				1619E4212846EFA500849C5F /* ViewController.swift in Sources */,
 				16CBBF1D2856C34500B640CC /* AddAlarmView.swift in Sources */,
 				16CBBF1B2856C30E00B640CC /* AddAlarmViewController.swift in Sources */,
 				1619E41D2846EFA500849C5F /* AppDelegate.swift in Sources */,
 				1619E41F2846EFA500849C5F /* SceneDelegate.swift in Sources */,
+				16CF5CD82863F59A00CFFC41 /* AlertViewController.swift in Sources */,
+				16CF5CD42863F55600CFFC41 /* RepeatViewController.swift in Sources */,
 				16CBBF1F2858184D00B640CC /* ViewModel.swift in Sources */,
 				16CBBF212858189000B640CC /* Model.swift in Sources */,
 			);

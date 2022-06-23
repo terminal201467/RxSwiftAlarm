@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     private let storeObservable = Observable.just([Alarm]())
     
-    private let addAlarmViewController = AddAlarmViewController()
+    private let addAlarmViewController = UINavigationController(rootViewController: AddAlarmViewController())
     
     private let disposeBag = DisposeBag()
     

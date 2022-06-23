@@ -12,7 +12,6 @@ class AddAlarmView: UIView {
 
     let datePicker:UIDatePicker = {
        let datePicker = UIDatePicker()
-//        datePicker.datePickerStyle = .wheels
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         return datePicker
@@ -26,9 +25,16 @@ class AddAlarmView: UIView {
         return tableView
     }()
     
+    let remindLaterSwitch:UISwitch = {
+        let remindLaterSwitch = UISwitch()
+        remindLaterSwitch.isOn = true
+        return remindLaterSwitch
+    }()
+    
     //MARK: -Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(remindLaterSwitch)
         addSubview(datePicker)
         addSubview(table)
         autoLayout()
@@ -42,7 +48,8 @@ class AddAlarmView: UIView {
     private func autoLayout(){
         datePicker.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.trailing.leading.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(20)
             make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.5)
         }
         
