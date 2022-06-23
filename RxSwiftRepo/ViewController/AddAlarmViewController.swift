@@ -21,9 +21,9 @@ enum CellName:Int,CaseIterable{
     }
     var controller:UIViewController{
         switch self{
-        case .repeats:     return UINavigationController(rootViewController: RepeatViewController())
-        case .label:       return UINavigationController(rootViewController: LabelViewController())
-        case .alert:       return UINavigationController(rootViewController: AlertViewController())
+        case .repeats:     return RepeatViewController()
+        case .label:       return LabelViewController()
+        case .alert:       return AlertViewController()
         case .remindLater: return UIViewController()
         }
     }
@@ -126,21 +126,14 @@ class AddAlarmViewController: UIViewController {
     }
     
     private func setTableViewItemSelect(){
-        addAlarmView.table.rx.itemSelected.subscribe { indexPath in
-            print("選中的indexPath:\(indexPath.row)")
-            guard let cellNames = CellName(rawValue: indexPath.row)else{ return }
+        addAlarmView.table.rx.itemSelected.subscribe {indexPath in
+            guard let cellNames = CellName(rawValue: indexPath.element!.row)else{ return }
             switch cellNames {
-            case .repeats:      self.present(cellNames.controller, animated: true, completion: nil)
-            case .label:        self.present(cellNames.controller, animated: true, completion: nil)
-            case .alert:        self.present(cellNames.controller, animated: true, completion: nil)
+            case .repeats:      self.navigationController?.pushViewController(cellNames.controller, animated: true)
+            case .label:        self.navigationController?.pushViewController(cellNames.controller, animated: true)
+            case .alert:        self.navigationController?.pushViewController(cellNames.controller, animated: true)
             case .remindLater:  print("remindLater")
             }
-        } onError: { error in
-            print("\(error)")
-        } onCompleted: {
-            print("completed")
-        } onDisposed: {
-            print("disposed")
-        }.disposed(by: disposeBag)
+        }
     }
 }

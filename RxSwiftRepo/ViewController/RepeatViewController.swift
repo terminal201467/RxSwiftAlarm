@@ -8,6 +8,24 @@
 import UIKit
 
 class RepeatViewController: UIViewController {
+    
+    //MARK: -TableView
+    private let table:UITableView = {
+       let tableView = UITableView()
+        tableView.separatorStyle = .singleLine
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.allowsSelection = true
+        return tableView
+    }()
+    
+    //MARK: -LifeCycle
+    override func loadView() {
+        super.loadView()
+        view.addSubview(table)
+        table.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,15 +33,6 @@ class RepeatViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
