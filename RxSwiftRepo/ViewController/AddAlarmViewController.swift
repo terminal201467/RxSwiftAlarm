@@ -19,14 +19,24 @@ enum CellName:Int,CaseIterable{
         case .remindLater: return "RemindLater"
         }
     }
+    var controller:UIViewController{
+        switch self{
+        case .repeats:     return UINavigationController(rootViewController: RepeatViewController())
+        case .label:       return UINavigationController(rootViewController: LabelViewController())
+        case .alert:       return UINavigationController(rootViewController: AlertViewController())
+        case .remindLater: return UIViewController()
+        }
+    }
 }
 
 class AddAlarmViewController: UIViewController {
     //MARK: - Properties
     
-    private var repeatTime:String = ""
+    private var repeatTime:String = "永不"
     
+    private var alarmName:String = "鬧鐘"
     
+    private var remindSoundName:String = "山坡"
     
     //MARK: - UIProperties
     private let addAlarmView = AddAlarmView()
@@ -36,6 +46,8 @@ class AddAlarmViewController: UIViewController {
         formatter.dateFormat = "yyyy年MM月dd日 HH:mm"
         return formatter
     }()
+    
+    //MARK: - Controllers
     
     //MARK: - DataProperties
     
@@ -69,11 +81,11 @@ class AddAlarmViewController: UIViewController {
     }
     
     @objc func save(){
-        
+        dismiss(animated: true)
     }
     
     @objc func cancel(){
-        
+        dismiss(animated: true)
     }
     
     //MARK: -setDatePicker
@@ -93,13 +105,15 @@ class AddAlarmViewController: UIViewController {
                 switch cellName {
                 case .repeats:
                     cell.textLabel?.text = cellName.text
-                    cell.detailTextLabel?.text =
+                    cell.detailTextLabel?.text = self.repeatTime
                     cell.accessoryType = .disclosureIndicator
                 case .label:
                     cell.textLabel?.text = cellName.text
+                    cell.detailTextLabel?.text = self.alarmName
                     cell.accessoryType = .disclosureIndicator
                 case .alert:
                     cell.textLabel?.text = cellName.text
+                    cell.detailTextLabel?.text = self.remindSoundName
                     cell.accessoryType = .disclosureIndicator
                 case .remindLater:
                     cell.textLabel?.text = cellName.text
@@ -114,14 +128,10 @@ class AddAlarmViewController: UIViewController {
             print("選中的indexPath:\(indexPath.row)")
             guard let cellNames = CellName(rawValue: indexPath.row)else{ return }
             switch cellNames {
-            case .repeats:
-                print("repeat")
-            case .label:
-                print("label")
-            case .alert:
-                print("alert")
-            case .remindLater:
-                print("remindLater")
+            case .repeats:      self.present(cellNames.controller, animated: true, completion: nil)
+            case .label:        self.present(cellNames.controller, animated: true, completion: nil)
+            case .alert:        self.present(cellNames.controller, animated: true, completion: nil)
+            case .remindLater:  print("remindLater")
             }
         } onError: { error in
             print("\(error)")

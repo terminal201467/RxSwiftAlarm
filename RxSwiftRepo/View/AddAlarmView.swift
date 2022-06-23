@@ -34,6 +34,7 @@ class AddAlarmView: UIView {
     //MARK: -Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         addSubview(remindLaterSwitch)
         addSubview(datePicker)
         addSubview(table)
@@ -47,14 +48,13 @@ class AddAlarmView: UIView {
     //MARK: -AutoLayout
     private func autoLayout(){
         datePicker.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-20)
-            make.leading.equalToSuperview().offset(20)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.5)
+            make.top.equalToSuperview().offset(20)
+            make.trailing.leading.equalToSuperview()
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.4)
         }
         
         table.snp.makeConstraints { make in
-            make.top.equalTo(datePicker)
+            make.top.equalTo(datePicker.snp.bottom)
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }
