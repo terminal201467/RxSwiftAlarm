@@ -9,6 +9,16 @@ import UIKit
 import SnapKit
 
 class AddAlarmView: UIView {
+    
+    var saveBarButton:UIBarButtonItem = {
+        let saveBarButton = UIBarButtonItem(systemItem: .save)
+        return saveBarButton
+    }()
+    
+    var cancelBarButton:UIBarButtonItem = {
+        let cancelBarButton = UIBarButtonItem(systemItem: .cancel)
+        return cancelBarButton
+    }()
 
     let datePicker:UIDatePicker = {
        let datePicker = UIDatePicker()

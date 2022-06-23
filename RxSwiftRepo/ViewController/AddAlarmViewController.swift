@@ -73,19 +73,21 @@ class AddAlarmViewController: UIViewController {
     private func setNavigationBar(){
         title = "Create Alarm"
         navigationController?.navigationBar.prefersLargeTitles = false
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
-        navigationItem.rightBarButtonItem = saveButton
-        navigationItem.leftBarButtonItem = cancelButton
-    }
-    
-    @objc func save(){
-        dismiss(animated: true)
-    }
-    
-    @objc func cancel(){
-        dismiss(animated: true)
+        addAlarmView.saveBarButton.rx.tap
+            .subscribe(onNext:  { [weak self] in
+            self?.dismiss(animated: true)
+        })
+        .disposed(by: disposeBag)
+        
+        addAlarmView.cancelBarButton.rx.tap
+            .subscribe(onNext:  { [weak self] in
+            self?.dismiss(animated: true)
+        })
+        .disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem = addAlarmView.saveBarButton
+        navigationItem.leftBarButtonItem = addAlarmView.cancelBarButton
     }
     
     //MARK: -setDatePicker
