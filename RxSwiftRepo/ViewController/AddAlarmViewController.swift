@@ -25,6 +25,11 @@ class AddAlarmViewController: UIViewController {
     //MARK: - UIProperties
     private let addAlarmView = AddAlarmView()
     
+    private lazy var dateFormatter:DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日 HH:mm"
+        return formatter
+    }()
     
     //MARK: - DataProperties
     
@@ -41,7 +46,7 @@ class AddAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setTableView()
+        setDatePicker()
         setTableCellItem()
         setTableViewItemSelect()
     }
@@ -65,15 +70,29 @@ class AddAlarmViewController: UIViewController {
         
     }
     
-    //MARK: -setTalbleView
-    private func setTableView(){
-        addAlarmView.table.delegate = self
+    //MARK: -setDatePicker
+    private func setDatePicker(){
+        addAlarmView.datePicker.rx.date
+            .map { [weak self] in
+                "當前選擇時間" + self!.dateFormatter.string(from: $0)
+            }
     }
     
+    //MARK: -setTableView
     private func setTableCellItem(){
         cellNames
-            .bind(to: addAlarmView.table.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)){(_,cellName:CellName,cell:UITableViewCell) in
-                cell.textLabel?.text = cellName.text
+            .bind(to: addAlarmView.table.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)){(_,cellName:CellName,cell:UITableViewCell,element) in
+                guard let cellName = CellName(rawValue:element) else { return }
+                switch cellName {
+                case .repeats:
+                    cell.textLabel?.text = cellName.text
+                case .label:
+                    cell.textLabel?.text = cellName.text
+                case .alert:
+                    cell.textLabel?.text = cellName.text
+                case .remindLater:
+                    cell.textLabel?.text = cellName.text
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -99,11 +118,5 @@ class AddAlarmViewController: UIViewController {
         } onDisposed: {
             print("disposed")
         }.disposed(by: disposeBag)
-    }
-}
-
-extension AddAlarmViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CellName.allCases.count
     }
 }
