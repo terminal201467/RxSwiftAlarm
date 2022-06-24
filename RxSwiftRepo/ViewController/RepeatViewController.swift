@@ -35,7 +35,13 @@ class RepeatViewController: UIViewController {
     }()
     
     //MARK: -WeekDayChoose
-    private var weekDayChooseObservable = Observable.just(Set<WeekDay>())
+    private var weekDayObservable = Observable.just(WeekDay.allCases)
+    
+    private let disposeBag = DisposeBag()
+    
+//    private var checkDay:Bool = false
+    
+    private var chooseDay = BehaviorSubject(value: [WeekDay]())
     
     //MARK: -LifeCycle
     override func loadView() {
@@ -48,21 +54,55 @@ class RepeatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setTableView()
+        setTableViewSelect()
+        setTableViewWillDisplay()
     }
     
-    private func setTableViewCells(){
-        weekDayChooseObservable
-            .bind(to: table.rx.items(cellIdentifier: "Cell", cellType:UITableViewCell.self){ (row,cell,element) in
-                
-                
+    private func setTableView(){
+        weekDayObservable
+            .bind(to: table.rx.items){ (tableView,row,element) in
+                let cell = self.table.dequeueReusableCell(withIdentifier: "Cell")!
+                cell.textLabel?.text = "\(row):\(element)"
                 return cell
             }
-        
+            .disposed(by: disposeBag)
     }
     
     private func setTableViewSelect(){
-        
+        table.rx.itemSelected.subscribe { indexPath in
+            print("選中的row:\(indexPath.element?.row)")
+//            self.checkDay.toggle()
+            guard let weekCell = WeekDay(rawValue: indexPath.element!.row) else { return }
+            switch weekCell {
+            case .mon: chooseDay
+            case .tue:
+                <#code#>
+            case .wed:
+                <#code#>
+            case .thu:
+                <#code#>
+            case .fri:
+                <#code#>
+            case .sat:
+                <#code#>
+            case .sun:
+                <#code#>
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func setTableViewWillDisplay(){
+        table.rx.willDisplayCell.subscribe { (cell,indexPath) in
+            print("WillDisplay")
+            
+            
+//            if self.checkDay == true{
+//                cell.accessoryType = .checkmark
+//            }else{
+//                cell.accessoryType = .none
+//            }
+        }
+        .disposed(by: disposeBag)
     }
 }
